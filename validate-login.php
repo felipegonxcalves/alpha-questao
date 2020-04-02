@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else{
         $_SESSION['DATA_USER'] = $user;
-        header("Location: questao01.php");
+        header('Location: ' . $user["desquestao"] );
         exit;
     }
 }
