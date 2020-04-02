@@ -6,10 +6,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $dataRequest = $_POST;
 
+    if (isset($_SESSION['MESSAGE'])){
+        unset($_SESSION['MESSAGE']);
+    }
 
     $user = getUserByCpf($dataRequest['cpf'], $conexao);
 
     if ($user['stsativo'] == null){
+        $_SESSION['MESSAGE'] = "Cpf inválido";
         header("Location: login.php");
         exit;
     }
